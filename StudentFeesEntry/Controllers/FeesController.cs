@@ -24,9 +24,10 @@ namespace StudentFeesEntry.Controllers
         }
 
         // GET: FeesController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int Id)
         {
-            return View();
+             var res= obj.selectid(Id);
+            return View("Details",res);
         }
 
         // GET: FeesController/Create
@@ -91,17 +92,19 @@ namespace StudentFeesEntry.Controllers
         // GET: FeesController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var res = obj.selectid(id);
+            return View("Delete",res);
         }
 
         // POST: FeesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, StudentModel collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                obj.deletesp(id);
+                return RedirectToAction(nameof(List));
             }
             catch
             {

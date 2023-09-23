@@ -4,12 +4,30 @@
     ViewData["Title"] = "List";
 }
 
+
+@section scripts {
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            alert('pop');
+
+            $('#customerDatatable').dataTable({
+            });
+        });
+
+    </script>
+
+
+}
 <h1>List</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table  id="customerDatatable" class="table">
     <thead>
         <tr>
             <th>
@@ -28,26 +46,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FeesHeader)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=id  }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FeesHeader)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { Id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { Id = item.Id })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

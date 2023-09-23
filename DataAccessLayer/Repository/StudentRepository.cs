@@ -110,7 +110,7 @@ namespace DataAccessLayer.Repository
             {
                 SqlConnection connection = new SqlConnection(connectionstring);
                 connection.Open();
-                connection.Execute($"exec  deletesp  {id}");
+                connection.Execute($"exec dbo.Deletebyid  {id}");
                 connection.Close();
 
             }
